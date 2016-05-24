@@ -1,4 +1,27 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        // Error:Connection refused 오류가 생긴다. 그런데, charles를 실행하고 나서 다시하면, 의존성이 다운로드 된다. proxy 문제?
+        // 0.3.5 버전을 쓰면 다음의 오류 발생 :bintrayUpload: Could not find publication: maven. 해결책은 https://github.com/novoda/bintray-release/issues/75
+        classpath 'com.novoda:bintray-release:0.3.4'
+    }
+}
+
+publish {
+    userOrg = "puresprout"
+    groupId = 'com.purestation'
+    artifactId = 'android-widget-plus'
+    publishVersion = '0.0.1'
+    desc = "android widget plus"
+    website = "https://github.com/puresprout/android-widget-plus"
+    issueTracker = "${website}/issues"
+    repository = "${website}.git"
+}
 
 android {
     compileSdkVersion 23
