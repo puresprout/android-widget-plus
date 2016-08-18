@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ServerConfigManager {
 
-    private static final String PREF_NAME = "serverConfig";
+    private static final String BASE_PREF_NAME = "serverConfig_";
     private static final String TARGET_SERVER = "targetServer";
 
     private List<ServerConfig> mList;
@@ -18,11 +18,15 @@ public class ServerConfigManager {
     private SharedPreferences sharedPref;
 
     public ServerConfigManager(Context ctx, List<ServerConfig> list, ServerConfig defaultConfig) {
+        this(ctx, null, list, defaultConfig);
+    }
+
+    public ServerConfigManager(Context ctx, String serverType, List<ServerConfig> list, ServerConfig defaultConfig) {
         mCtx = ctx.getApplicationContext();
         mList = list;
         mDefaultConfig = defaultConfig;
 
-        sharedPref = mCtx.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        sharedPref = mCtx.getSharedPreferences(BASE_PREF_NAME + serverType, Context.MODE_PRIVATE);
     }
 
     public List<ServerConfig> getServerConfigList() {

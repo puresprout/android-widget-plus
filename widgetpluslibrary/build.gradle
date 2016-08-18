@@ -16,7 +16,7 @@ publish {
     userOrg = "puresprout"
     groupId = 'com.purestation'
     artifactId = 'android-widget-plus'
-    publishVersion = '0.0.1'
+    publishVersion = '0.0.2'
     desc = "android widget plus"
     website = "https://github.com/puresprout/android-widget-plus"
     issueTracker = "${website}/issues"

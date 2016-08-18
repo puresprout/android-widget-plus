@@ -11,9 +11,6 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-/**
- * Created by 1002703 on 16. 5. 17..
- */
 public class ProgressImageView extends ImageView {
 
     public enum ProgressType {
