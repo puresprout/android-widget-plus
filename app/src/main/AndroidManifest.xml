@@ -11,15 +11,32 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <!-- 데모 목록에 보이지 않도록 -->
-            <meta-data android:name="isLaunchableActivity" android:value="false" />
+            <meta-data
+                android:name="isLaunchableActivity"
+                android:value="false" />
         </activity>
-
-        <activity android:name=".ProgressImageViewActivity" android:label="@string/progressImageViewDemo">
-            <meta-data android:name="minVersion" android:value="10" />
-            <meta-data android:name="isLaunchableActivity" android:value="true" />
+        <activity
+            android:name=".ProgressImageViewActivity"
+            android:label="@string/progressImageViewDemo">
+            <meta-data
+                android:name="minVersion"
+                android:value="10" />
+            <meta-data
+                android:name="isLaunchableActivity"
+                android:value="true" />
+        </activity>
+        <activity android:name=".ServerConfigActivity"
+            android:label="@string/serverSelectionViewDemo">
+            <meta-data
+                android:name="minVersion"
+                android:value="10" />
+            <meta-data
+                android:name="isLaunchableActivity"
+                android:value="true" />
         </activity>
     </application>
 
