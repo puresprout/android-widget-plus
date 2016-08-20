@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServerConfigActivity extends AppCompatActivity {
-    
+
     private ServerConfigManager mManager;
 
     @Override
@@ -27,14 +27,14 @@ public class ServerConfigActivity extends AppCompatActivity {
 
     public void onClickServerConfig(View view) {
         ServerConfigSelectionView serverConfigSelectionView = new ServerConfigSelectionView(this, mManager);
+        final AlertDialog dialog = new AlertDialog.Builder(this).setMessage(R.string.select_server).setView(serverConfigSelectionView).show();
         serverConfigSelectionView.setOnServerSelectedListener(new ServerConfigSelectionView.OnServerSelectedListener() {
             @Override
             public void onServerSelected(String url) {
                 Toast.makeText(ServerConfigActivity.this, url + " selected.", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
             }
         });
-
-        new AlertDialog.Builder(this).setMessage(R.string.select_server).setView(serverConfigSelectionView).show();
     }
 
     private List<ServerConfig> makeServerConfigList() {
@@ -48,5 +48,5 @@ public class ServerConfigActivity extends AppCompatActivity {
     private ServerConfig makeDefaultConfig() {
         return new ServerConfig("REAL", "http://naver.com");
     }
-    
+
 }
