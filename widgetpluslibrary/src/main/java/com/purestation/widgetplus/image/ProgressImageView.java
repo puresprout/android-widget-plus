@@ -11,6 +11,9 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+/**
+ * 진행률을 보여주는 이미지뷰
+ */
 public class ProgressImageView extends ImageView {
 
     public enum ProgressType {
@@ -23,13 +26,21 @@ public class ProgressImageView extends ImageView {
     private Paint textPaint;
     private Rect textBounds;
     private RectF progressRect;
+    private int color = Color.argb(128, 0, 0, 0);
 
     private ProgressType progressType = ProgressType.ARC;
 
-    /** 진행률이 100%가 되었을 때 진행정보를 없앨지 여부 */
+    /**
+     * 진행률이 0%일 때 진행정보를 없앨지 여부. 기본값은 없앤다.
+     */
+    private boolean dismissProgressWhenThisIsMin = true;
+
+    /**
+     * 진행률이 100%가 되었을 때 진행정보를 없앨지 여부. 기본값은 없앤다.
+     */
     private boolean dismissProgressWhenThisIsMax = true;
 
-    private boolean dismissProgress;
+    private boolean dismissProgress = true;
 
     public ProgressImageView(Context context) {
         super(context);
@@ -59,7 +70,7 @@ public class ProgressImageView extends ImageView {
     private void init() {
         paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setColor(Color.argb(192, 0, 0, 0));
+        paint.setColor(color);
 
         float textSize = getResources().getDisplayMetrics().scaledDensity * 18;
 
@@ -71,6 +82,14 @@ public class ProgressImageView extends ImageView {
 
         textBounds = new Rect();
         progressRect = new RectF();
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     public void setProgressType(ProgressType progressType) {
@@ -89,9 +108,15 @@ public class ProgressImageView extends ImageView {
     public void setProgress(int progress) {
         this.progress = progress;
 
+        if (progress == 0 && dismissProgressWhenThisIsMin) {
+            dismissProgress = true;
+        } else {
+            dismissProgress = false;
+        }
+
         invalidate();
 
-        if (dismissProgressWhenThisIsMax && this.progress >= 100) {
+        if (this.progress >= 100 && dismissProgressWhenThisIsMax) {
             postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -109,10 +134,38 @@ public class ProgressImageView extends ImageView {
 
     public void setDismissProgressWhenThisIsMax(boolean dismissProgressWhenThisIsMax) {
         this.dismissProgressWhenThisIsMax = dismissProgressWhenThisIsMax;
+
+        if (dismissProgressWhenThisIsMax) {
+            dismissProgress = true;
+        } else {
+            dismissProgress = false;
+        }
+
+        if (progress >= 100) {
+            invalidate();
+        }
     }
 
     public boolean doesDismissProgressWhenThisIsMax() {
         return dismissProgressWhenThisIsMax;
+    }
+
+    public boolean isDismissProgressWhenThisIsMin() {
+        return dismissProgressWhenThisIsMin;
+    }
+
+    public void setDismissProgressWhenThisIsMin(boolean dismissProgressWhenThisIsMin) {
+        this.dismissProgressWhenThisIsMin = dismissProgressWhenThisIsMin;
+
+        if (dismissProgressWhenThisIsMin) {
+            dismissProgress = true;
+        } else {
+            dismissProgress = false;
+        }
+
+        if (progress == 0) {
+            invalidate();
+        }
     }
 
     @Override
