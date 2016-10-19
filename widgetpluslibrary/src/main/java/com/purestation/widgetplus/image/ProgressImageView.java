@@ -90,6 +90,7 @@ public class ProgressImageView extends ImageView {
 
     public void setColor(int color) {
         this.color = color;
+        paint.setColor(color);
     }
 
     public void setProgressType(ProgressType progressType) {
