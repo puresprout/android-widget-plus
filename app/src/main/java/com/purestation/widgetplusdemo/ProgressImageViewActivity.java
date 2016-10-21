@@ -8,6 +8,7 @@ import android.view.View;
 import com.purestation.widgetplus.image.ProgressImageView;
 
 public class ProgressImageViewActivity extends AppCompatActivity {
+    private int progress = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,12 +16,19 @@ public class ProgressImageViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_progress_image_view);
 
         final ProgressImageView imageView = (ProgressImageView) findViewById(R.id.progressImageView);
-        imageView.setColor(Color.rgb(255, 0, 0));
+        imageView.setColor(Color.argb(128, 255, 255, 255));
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                imageView.setProgress(1);
+                imageView.setProgress(++progress);
+            }
+        });
+
+        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView.setDisabledProgress(!imageView.isDisabledProgress());
             }
         });
 

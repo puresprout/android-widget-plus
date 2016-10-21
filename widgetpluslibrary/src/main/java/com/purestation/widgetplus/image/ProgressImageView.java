@@ -28,6 +28,11 @@ public class ProgressImageView extends ImageView {
     private RectF progressRect;
     private int color = Color.argb(128, 0, 0, 0);
 
+    /**
+     * 진행표시가 비활성화 되었는지 여부. true면 화면에 진행표시가 나타나지 않는다.
+     */
+    private boolean disabledProgress;
+
     private ProgressType progressType = ProgressType.ARC;
 
     /**
@@ -169,13 +174,25 @@ public class ProgressImageView extends ImageView {
         }
     }
 
+    public boolean isDisabledProgress() {
+        return disabledProgress;
+    }
+
+    public void setDisabledProgress(boolean disabledProgress) {
+        this.disabledProgress = disabledProgress;
+
+        invalidate();
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if (!dismissProgress) {
-            drawProgressFigure(canvas);
-            drawProgressText(canvas);
+        if (!disabledProgress) {
+            if (!dismissProgress) {
+                drawProgressFigure(canvas);
+                drawProgressText(canvas);
+            }
         }
     }
 
