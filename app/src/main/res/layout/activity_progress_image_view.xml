@@ -12,19 +12,19 @@
 
     <com.purestation.widgetplus.image.ProgressImageView
         android:id="@+id/progressImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:src="@mipmap/ic_launcher" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="change progress" />
+        android:text="increase progress" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="toggle disable progress" />
+        android:text="toggle visibility of progress" />
 </LinearLayout>
