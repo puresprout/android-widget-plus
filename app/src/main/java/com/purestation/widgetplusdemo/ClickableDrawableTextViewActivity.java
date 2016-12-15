@@ -13,7 +13,7 @@ public class ClickableDrawableTextViewActivity extends AppCompatActivity {
     private ClickableDrawableTextView.OnDrawableClickListener listener = new ClickableDrawableTextView.OnDrawableClickListener() {
         @Override
         public void onClick(View v, ClickableDrawableTextView.DrawablePosition drawablePosition) {
-            Toast.makeText(ClickableDrawableTextViewActivity.this, drawablePosition + " drawable이 클릭되었습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ClickableDrawableTextViewActivity.this, drawablePosition + " drawable clicked.", Toast.LENGTH_SHORT).show();
         }
     };
 
