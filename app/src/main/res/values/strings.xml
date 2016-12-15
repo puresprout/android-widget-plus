@@ -3,9 +3,10 @@
 
     <string name="list_item_disabled">이 데모는 안드로이드 API %1$s 이상을 요구합니다.</string>
 
-    <string name="demo_item_select">데모를 선택하세요.</string>
-    <string name="progressImageViewDemo">프로그레스 이미지뷰 데모</string>
-    <string name="serverSelectionViewDemo">서버 선택뷰 데모</string>
+    <string name="demo_item_select">Select Demo</string>
+    <string name="progressImageViewDemo">ProgressImageView Demo</string>
+    <string name="serverSelectionViewDemo">ServerSelectionView Demo</string>
+    <string name="clickableDrawableTextViewDemo">ClickableDrawableTextView Demo</string>
 
     <string name="select_server">서버를 선택하세요.</string>
 </resources>

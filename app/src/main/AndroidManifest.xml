@@ -29,8 +29,19 @@
                 android:name="isLaunchableActivity"
                 android:value="true" />
         </activity>
-        <activity android:name=".ServerConfigActivity"
+        <activity
+            android:name=".ServerConfigActivity"
             android:label="@string/serverSelectionViewDemo">
+            <meta-data
+                android:name="minVersion"
+                android:value="10" />
+            <meta-data
+                android:name="isLaunchableActivity"
+                android:value="true" />
+        </activity>
+        <activity
+            android:name=".ClickableDrawableTextViewActivity"
+            android:label="@string/clickableDrawableTextViewDemo">
             <meta-data
                 android:name="minVersion"
                 android:value="10" />
